@@ -26,11 +26,11 @@ public class A1_GUI extends Application {
 /*
     private static ArrayList<A1_Model> presidents = new ArrayList<>();
     private ComboBox<String> presidentBox;
-    private Label nameLabel, surnameLabel, marketValueLabel;
-    private TextField marketValueField;
-    private ImageView playerImageView;
+    private Label nameLabel, surnameLabel, lengthLabel;
+    private TextField lengthValueField;
+    private ImageView presidentImageView;
     private Button saveButton;
-    private SimpleIntegerProperty currentPlayerIndex; */
+    private SimpleIntegerProperty presidentIndex; */
 
  
 	private static ArrayList<A1_Input> presidents = new ArrayList<>();
@@ -100,8 +100,8 @@ public class A1_GUI extends Application {
 
  
 
-        prevButton.setOnAction(e -> showPlayerInfo(currentPlayerIndex.get() - 1));
-        nextButton.setOnAction(e -> showPlayerInfo(currentPlayerIndex.get() + 1));
+        prevButton.setOnAction(e -> showPlayerInfo(presidentIndex.get() - 1));
+        nextButton.setOnAction(e -> showPlayerInfo(presidentIndex.get() + 1));
 
  
 
@@ -110,8 +110,8 @@ public class A1_GUI extends Application {
         HBox topBox = new HBox(presidentBox);
         HBox buttonBox = new HBox(prevButton, nextButton, saveButton);
         root.setTop(topBox);
-        VBox playerInfoBox = new VBox(nameLabel, surnameLabel, marketValueLabel, marketValueField);
-        HBox playerBox = new HBox(playerImageView);
+        VBox playerInfoBox = new VBox(nameLabel, surnameLabel, dobLabel, lengthValueField);
+        HBox playerBox = new HBox(presidentImageView);
         root.setLeft(playerInfoBox);
         root.setCenter(playerBox);
         root.setBottom(buttonBox);
@@ -135,35 +135,35 @@ public class A1_GUI extends Application {
             A1_Model player = presidents.get(index);
             nameLabel.setText("Name: " + player.getName());
             surnameLabel.setText("Surname: " + player.getSurname());
-            marketValueLabel.setText("Market Value: ");
-            marketValueField.setText(String.valueOf(player.getMarketValue())); // Set the text in the TextField
+            lengthLabel.setText("Market Value: ");
+            lengthValueField.setText(String.valueOf(player.getMarketValue())); // Set the text in the TextField
 
  
 
             // Load and display player's image (replace with your image loading code)
             Image playerImage = new Image(player.getPicture());
-            playerImageView.setImage(playerImage);
+            presidentImageView.setImage(playerImage);
 
  
 
             presidentBox.getSelectionModel().select(index);
-            currentPlayerIndex.set(index);
+            presidentIndex.set(index);
         }
     }
 
  
 
     public void saveMarketValue() {
-        int index = currentPlayerIndex.get();
+        int index = presidentIndex.get();
         if (index >= 0 && index < presidents.size()) {
             A1_Model player = presidents.get(index);
             try {
-                int newMarketValue = Integer.parseInt(marketValueField.getText());
-                player.setMarketValue(newMarketValue);
+                int newLength = Integer.parseInt(lengthValueField.getText());
+                player.setMarketValue(newLength);
                 saveToCSV();
             } catch (NumberFormatException e) {
                 // Handle invalid input
-                marketValueField.setText(String.valueOf(player.getMarketValue()));
+                lengthValueField.setText(String.valueOf(player.getMarketValue()));
             }
         }
     }
