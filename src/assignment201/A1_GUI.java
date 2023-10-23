@@ -122,13 +122,17 @@ public class A1_GUI extends Application {
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
 
+<<<<<<< HEAD
  //tetettetetettetetetetettedddeee1814jjjjj
+=======
+ //test
+>>>>>>> branch 'master' of https://github.com/FHdombth/grlpwr
 
         // Show the stage
         primaryStage.show();
     }
 
- 
+ // jjcjcjcjcjcjhvhjcvjvh 18:23
 
     public void showPlayerInfo(int index) {
         if (index >= 0 && index < presidents.size()) {
