@@ -97,7 +97,7 @@ public class A1_GUI extends Application {
         // Create navigation buttons
         Button prevButton = new Button("Previous");
         Button nextButton = new Button("Next");
-
+// test dini mueter
  
 
         prevButton.setOnAction(e -> showPlayerInfo(presidentIndex.get() - 1));
