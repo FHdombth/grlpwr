@@ -122,7 +122,7 @@ public class A1_GUI extends Application {
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
 
- //tetettetetettetetetetette
+ //tetettetetettetetetetetteddd
 
         // Show the stage
         primaryStage.show();
