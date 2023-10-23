@@ -128,7 +128,7 @@ public class A1_GUI extends Application {
         primaryStage.show();
     }
 
- //test
+ 
 
     public void showPlayerInfo(int index) {
         if (index >= 0 && index < presidents.size()) {
