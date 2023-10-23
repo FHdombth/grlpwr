@@ -35,7 +35,7 @@ public class A1_GUI extends Application {
  
 	private static ArrayList<A1_Input> presidents = new ArrayList<>();
 	private ComboBox<String> presidentBox;
-	private Label nameLabel, surnameLabel, dobLabel, lengthLabel;
+	private Label surnameLabel, dobLabel, lengthLabel;
 	private TextField lengthValueField;
 	private ImageView presidentImageView;
 	private Button saveButton;
@@ -122,7 +122,7 @@ public class A1_GUI extends Application {
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
 
- //tetettetetettetetetetettedddeee1814
+ //tetettetetettetetetetettedddeee1814jjjjj
 
         // Show the stage
         primaryStage.show();
