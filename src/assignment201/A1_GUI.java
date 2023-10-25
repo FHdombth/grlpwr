@@ -83,7 +83,7 @@ public class A1_GUI extends Application {
         }
 
  
-
+//test
         // Set up initial words information
         showpresidentinfo(0);
 

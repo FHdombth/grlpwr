@@ -85,10 +85,10 @@ public class A1_Model { //object class
 		String lineString = scan.nextLine();
 		String [] words = lineString.split(";");
 		
-		A1_Model a = new A1_Model (words[0], words[1], Integer.parseInt(words[2]), Integer.parseInt(words[3]), words[4]);
-		
+		A1_Model presidentsar = new A1_Model (words[0], words[1], Integer.parseInt(words[2]), Integer.parseInt(words[3]), words[4]);
+		presidentsar.add(presidents);
 		//System.out.println(scan.nextLine());
-		System.out.println(a);
+		System.out.println(presidentsar);
 	}
 	
 		
@@ -99,7 +99,12 @@ public class A1_Model { //object class
 	}
     }
 
-    public void saveObjectsToCSV(String filename) {
+    private void add(ArrayList<A1_Input> presidents2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void saveObjectsToCSV(String filename) {
         // Implement CSV saving logic here
     }
 
