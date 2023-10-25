@@ -33,9 +33,9 @@ public class A1_GUI extends Application {
     private SimpleIntegerProperty presidentIndex; */
 
  
-	private static ArrayList<A1_Input> presidents = new ArrayList<>();
+	private static ArrayList<A1_Model> presidents = new ArrayList<>();
 	private ComboBox<String> presidentBox;
-	private Label surnameLabel, dobLabel, lengthLabel;
+	private Label surnameLabel, dobLabel, lengthLabel, nameLabel;
 	private TextField lengthValueField;
 	private ImageView presidentImageView;
 	private Button saveButton;
@@ -72,13 +72,13 @@ public class A1_GUI extends Application {
         presidentImageView.setFitWidth(200); // Limit the image width
         presidentImageView.setFitHeight(200); // Limit the image height
         saveButton = new Button("Save");
-        saveButton.setOnAction(e -> saveMarketValue());
+       // saveButton.setOnAction(e -> saveMarketValue());
         presidentIndex = new SimpleIntegerProperty(0);
 
  
 
         // Populate the ComboBox with player names
-        for (A1_Input presidents : presidents) {
+        for (A1_Model name : presidents) {
             presidentBox.getItems().add(name.getName());
         }
 
@@ -122,31 +122,27 @@ public class A1_GUI extends Application {
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
 
-<<<<<<< HEAD
- //tetettetetettetetetetettedddeee1814jjjjj
-=======
- //test
->>>>>>> branch 'master' of https://github.com/FHdombth/grlpwr
+
 
         // Show the stage
         primaryStage.show();
     }
 
- // jjcjcjcjcjcjhvhjcvjvh 18:23
+
 
     public void showPlayerInfo(int index) {
         if (index >= 0 && index < presidents.size()) {
-            A1_Model player = presidents.get(index);
-            nameLabel.setText("Name: " + player.getName());
-            surnameLabel.setText("Surname: " + player.getSurname());
+            A1_Model name = presidents.get(index);
+            nameLabel.setText("Name: " + name.getName());
+            surnameLabel.setText("Surname: " + name.getSurname());
             lengthLabel.setText("Market Value: ");
-            lengthValueField.setText(String.valueOf(player.getMarketValue())); // Set the text in the TextField
+            //lengthValueField.setText(String.valueOf(name.getMarketValue())); // Set the text in the TextField
 
  
 
             // Load and display player's image (replace with your image loading code)
-            Image playerImage = new Image(player.getPicture());
-            presidentImageView.setImage(playerImage);
+            Image presidentImage = new Image(name.getPicture());
+            presidentImageView.setImage(presidentImage);
 
  
 
@@ -155,7 +151,7 @@ public class A1_GUI extends Application {
         }
     }
 
- 
+ /*
 
     public void saveMarketValue() {
         int index = presidentIndex.get();
@@ -172,31 +168,46 @@ public class A1_GUI extends Application {
         }
     }
 
- 
+ */
 
     public static void loadObjectsFromCSV() {
-        try {
-            Scanner scan = new Scanner(new File("C:\\Users\\franc\\eclipse-workspace\\HelloWorld\\src\\footballPlayers\\footballPlayers.csv"));
-            scan.nextLine(); // Skip the header line
-
- 
-
-            while (scan.hasNext()) {
-                String lineString = scan.nextLine();
-                String[] words = lineString.split(";");
-
- 
-
-                A1_Model player = new A1_Model(words[0], words[1], Integer.parseInt(words[2]), words[3]);
-                presidents.add(player);
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        // Implement CSV loading logic here
+    try {
+		Scanner scan = new Scanner(new File ("C:\\Users\\dombt\\eclipse-workspace\\Programming1\\src\\objects.csv"));
+		scan.nextLine();
+	while (scan.hasNext()) {
+		String lineString = scan.nextLine();
+		String [] words = lineString.split(";");
+		
+		A1_Model a = new A1_Model (words[0], words[1], Integer.parseInt(words[2]), Integer.parseInt(words[3]), words[4]);
+		
+		//System.out.println(scan.nextLine());
+		System.out.println(a);
+	}
+	
+		
+	
+	} catch (FileNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
     }
 
- 
+    public void saveObjectsToCSV(String filename) {
+        // Implement CSV saving logic here
+    }
 
+   /* public ArrayList<A1_Input> getObjects() {
+        return objects;
+    }
+*/
+    public void updateObject(A1_Input updatedObject) {
+        // Implement object update logic here
+}
+
+}
+ 
+/*
     public static void saveToCSV() {
         try (FileWriter writer = new FileWriter("C:\\Users\\franc\\eclipse-workspace\\HelloWorld\\src\\footballPlayers\\footballPlayers.csv")) {
             writer.write("name;surname;marketValue;picture\n");
@@ -208,3 +219,4 @@ public class A1_GUI extends Application {
         }
     }
 }
+*/
