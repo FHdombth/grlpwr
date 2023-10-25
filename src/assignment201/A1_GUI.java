@@ -77,31 +77,31 @@ public class A1_GUI extends Application {
 
  
 
-        // Populate the ComboBox with player names
-        for (A1_Model name : presidents) {
-            presidentBox.getItems().add(name.getName());
+        // Populate the ComboBox with  names
+        for (A1_Model presidentsar : presidents) {
+            presidentBox.getItems().add(presidentsar.getName());
         }
 
  
 
-        // Set up initial player information
-        showPlayerInfo(0);
+        // Set up initial words information
+        showpresidentinfo(0);
 
  
 
         // Handle ComboBox selection changes
-        presidentBox.setOnAction(e -> showPlayerInfo(presidentBox.getSelectionModel().getSelectedIndex()));
+        presidentBox.setOnAction(e -> showpresidentinfo(presidentBox.getSelectionModel().getSelectedIndex()));
 
  
 
         // Create navigation buttons
         Button prevButton = new Button("Previous");
         Button nextButton = new Button("Next");
-// test dini mueter
+
  
 
-        prevButton.setOnAction(e -> showPlayerInfo(presidentIndex.get() - 1));
-        nextButton.setOnAction(e -> showPlayerInfo(presidentIndex.get() + 1));
+        prevButton.setOnAction(e -> showpresidentinfo(presidentIndex.get() - 1));
+        nextButton.setOnAction(e -> showpresidentinfo(presidentIndex.get() + 1));
 
  
 
@@ -110,10 +110,10 @@ public class A1_GUI extends Application {
         HBox topBox = new HBox(presidentBox);
         HBox buttonBox = new HBox(prevButton, nextButton, saveButton);
         root.setTop(topBox);
-        VBox playerInfoBox = new VBox(nameLabel, surnameLabel, dobLabel, lengthValueField);
-        HBox playerBox = new HBox(presidentImageView);
-        root.setLeft(playerInfoBox);
-        root.setCenter(playerBox);
+        VBox wordsInfoBox = new VBox(nameLabel, surnameLabel, dobLabel, lengthValueField);
+        HBox wordsBox = new HBox(presidentImageView);
+        root.setLeft(wordsInfoBox);
+        root.setCenter(wordsBox);
         root.setBottom(buttonBox);
 
  
@@ -130,18 +130,18 @@ public class A1_GUI extends Application {
 
 
 
-    public void showPlayerInfo(int index) {
+    public void showpresidentinfo(int index) {
         if (index >= 0 && index < presidents.size()) {
-            A1_Model name = presidents.get(index);
-            nameLabel.setText("Name: " + name.getName());
-            surnameLabel.setText("Surname: " + name.getSurname());
-            lengthLabel.setText("Market Value: ");
+            A1_Model presidentsar = presidents.get(index);
+            nameLabel.setText("Name: " + presidentsar.getName());
+            surnameLabel.setText("Surname: " + presidentsar.getSurname());
+            lengthLabel.setText("Length of Presidency: ");
             //lengthValueField.setText(String.valueOf(name.getMarketValue())); // Set the text in the TextField
 
  
 
-            // Load and display player's image (replace with your image loading code)
-            Image presidentImage = new Image(name.getPicture());
+            // Load and display words's image (replace with your image loading code)
+            Image presidentImage = new Image(presidentsar.getPicture());
             presidentImageView.setImage(presidentImage);
 
  
@@ -156,14 +156,14 @@ public class A1_GUI extends Application {
     public void saveMarketValue() {
         int index = presidentIndex.get();
         if (index >= 0 && index < presidents.size()) {
-            A1_Model player = presidents.get(index);
+            A1_Model words = presidents.get(index);
             try {
                 int newLength = Integer.parseInt(lengthValueField.getText());
-                player.setMarketValue(newLength);
+                words.setMarketValue(newLength);
                 saveToCSV();
             } catch (NumberFormatException e) {
                 // Handle invalid input
-                lengthValueField.setText(String.valueOf(player.getMarketValue()));
+                lengthValueField.setText(String.valueOf(words.getMarketValue()));
             }
         }
     }
@@ -179,10 +179,10 @@ public class A1_GUI extends Application {
 		String lineString = scan.nextLine();
 		String [] words = lineString.split(";");
 		
-		A1_Model a = new A1_Model (words[0], words[1], Integer.parseInt(words[2]), Integer.parseInt(words[3]), words[4]);
+		A1_Model presidentsar = new A1_Model (words[0], words[1], Integer.parseInt(words[2]), Integer.parseInt(words[3]), words[4]);
 		
 		//System.out.println(scan.nextLine());
-		System.out.println(a);
+		System.out.println(presidentsar);
 	}
 	
 		
@@ -209,10 +209,10 @@ public class A1_GUI extends Application {
  
 /*
     public static void saveToCSV() {
-        try (FileWriter writer = new FileWriter("C:\\Users\\franc\\eclipse-workspace\\HelloWorld\\src\\footballPlayers\\footballPlayers.csv")) {
+        try (FileWriter writer = new FileWriter("C:\\Users\\franc\\eclipse-workspace\\HelloWorld\\src\\footballwordss\\footballwordss.csv")) {
             writer.write("name;surname;marketValue;picture\n");
-            for (A1_Model player : presidents) {
-                writer.write(player.getName() + ";" + player.getSurname() + ";" + player.getMarketValue() + ";" + player.getPicture() + "\n");
+            for (A1_Model words : presidents) {
+                writer.write(words.getName() + ";" + words.getSurname() + ";" + words.getMarketValue() + ";" + words.getPicture() + "\n");
             }
         } catch (IOException e) {
             e.printStackTrace();
